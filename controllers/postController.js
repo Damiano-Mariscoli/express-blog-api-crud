@@ -7,7 +7,7 @@ function index(req, res){
       
 }
 
-function 
+
 
 
 module.exports = { index }
