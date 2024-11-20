@@ -8,15 +8,8 @@ router.get("/", postController.index)
 
 
 //show
-router.get("/:id", (req, res) => {
-  const id = req.params.id;
-  const post = postsList.find((post) => post.id == id);
-  if (post) {
-    res.json(post);
-  } else {
-    res.json({ error: "Post not found" });
-  }
-});
+router.get("/:id", postController.show)
+
 
 //store
 router.post("/", (req, res) => {
@@ -34,8 +27,6 @@ router.patch("/:id", (req, res) => {
 });
 
 //destroy
-router.delete("/:id", (req, res) => {
-  res.send(`Elimino il post con id ${req.params.id}`);
-});
+router.delete("/:id", postController.destroy);
 
 module.exports = router;
