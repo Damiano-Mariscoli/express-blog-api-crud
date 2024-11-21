@@ -13,14 +13,10 @@ router.get("/:id", postController.show);
 router.post("/", postController.store);
 
 //update
-router.put("/:id", (req, res) => {
-  res.send(`Modifico il post con id: ${req.params.id}`);
-});
+router.put("/:id", postController.update);
 
 //modify
-router.patch("/:id", (req, res) => {
-  res.send(`Aggiorno il post con id: ${req.params.id}`);
-});
+router.patch("/:id", postController.modify);
 
 //destroy
 router.delete("/:id", postController.destroy);
