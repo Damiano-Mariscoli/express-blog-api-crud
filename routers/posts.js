@@ -10,9 +10,7 @@ router.get("/", postController.index);
 router.get("/:id", postController.show);
 
 //store
-router.post("/", (req, res) => {
-  res.send("Creo un nuovo post");
-});
+router.post("/", postController.store);
 
 //update
 router.put("/:id", (req, res) => {

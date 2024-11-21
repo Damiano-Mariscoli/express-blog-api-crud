@@ -43,4 +43,9 @@ function destroy(req, res) {
   }
 }
 
-module.exports = { index, show, destroy };
+function store(req, res) {
+  postsList.push(req.body);
+  res.send("creo una nuova pizza");
+}
+
+module.exports = { index, show, destroy, store };
