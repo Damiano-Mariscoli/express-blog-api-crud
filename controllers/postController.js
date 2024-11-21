@@ -45,7 +45,7 @@ function destroy(req, res) {
 
 function store(req, res) {
   postsList.push(req.body);
-  res.send("creo una nuova pizza");
+  res.send("creo un nuovo post");
 }
 
 module.exports = { index, show, destroy, store };
