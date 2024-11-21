@@ -46,18 +46,28 @@ function destroy(req, res) {
 }
 
 function store(req, res) {
-  let newIndex = postsList[postsList.length - 1].id + 1;
-  const newPost = {
-    id: newIndex,
-    title: req.body.title,
-    slug: req.body.slug,
-    content: req.body.content,
-    image: req.body.image,
-    tags: req.body.tags,
-  };
-  console.log(newPost);
-  postsList.push(newPost);
-  res.send("creo un nuovo post");
+  if (
+    req.body.title === undefined ||
+    req.body.slug === undefined ||
+    req.body.content === undefined ||
+    req.body.image === undefined ||
+    req.body.tags === undefined
+  ) {
+    res.send("errore mancano dei campi da compilare");
+  } else {
+    let newIndex = postsList[postsList.length - 1].id + 1;
+    const newPost = {
+      id: newIndex,
+      title: req.body.title,
+      slug: req.body.slug,
+      content: req.body.content,
+      image: req.body.image,
+      tags: req.body.tags,
+    };
+    console.log(newPost);
+    postsList.push(newPost);
+    res.send("creo un nuovo post");
+  }
 }
 
 function update(req, res) {
@@ -70,14 +80,19 @@ function update(req, res) {
 
   const postIndex = postsList.findIndex((post) => post.id === id);
   const post = postsList[postIndex];
-  const { title, slug, content, image, tags } = req.body;
-  post.title = title;
-  post.slug = slug;
-  post.content = content;
-  post.image = image;
-  post.tags = tags;
-  console.log(postsList);
-  res.sendStatus(200);
+  console.log(postIndex);
+  if (postIndex !== -1) {
+    const { title, slug, content, image, tags } = req.body;
+    post.title = title;
+    post.slug = slug;
+    post.content = content;
+    post.image = image;
+    post.tags = tags;
+    console.log(postIndex);
+    res.sendStatus(200);
+  } else {
+    res.sendStatus(404);
+  }
 }
 
 function modify(req, res) {
