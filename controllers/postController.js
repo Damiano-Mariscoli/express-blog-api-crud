@@ -1,5 +1,5 @@
 const postsList = require("../data/posts");
-const functions = require("../functions/functions");
+
 const { post } = require("../routers/posts");
 
 function index(req, res) {
@@ -46,14 +46,16 @@ function destroy(req, res) {
 }
 
 function store(req, res) {
+  let newIndex = postsList[postsList.length - 1].id + 1;
   const newPost = {
-    id: postsList.length + 1,
+    id: newIndex,
     title: req.body.title,
     slug: req.body.slug,
     content: req.body.content,
     image: req.body.image,
     tags: req.body.tags,
   };
+  console.log(newPost);
   postsList.push(newPost);
   res.send("creo un nuovo post");
 }
