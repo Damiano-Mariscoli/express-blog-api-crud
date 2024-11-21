@@ -1,4 +1,6 @@
 const postsList = require("../data/posts");
+const functions = require("../functions/functions");
+const { post } = require("../routers/posts");
 
 function index(req, res) {
   res.json(postsList);
@@ -44,7 +46,15 @@ function destroy(req, res) {
 }
 
 function store(req, res) {
-  postsList.push(req.body);
+  const newPost = {
+    id: postsList.length + 1,
+    title: req.body.title,
+    slug: req.body.slug,
+    content: req.body.content,
+    image: req.body.image,
+    tags: req.body.tags,
+  };
+  postsList.push(newPost);
   res.send("creo un nuovo post");
 }
 
