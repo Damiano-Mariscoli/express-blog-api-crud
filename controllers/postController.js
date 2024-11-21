@@ -34,9 +34,9 @@ function destroy(req, res) {
     (post) => post.id === id || post.slug === id
   );
   if (postIndex !== -1) {
-    console.log(postIndex)
+    console.log(postIndex);
     postsList.splice(postIndex, 1);
-    console.log(postsList)
+    console.log(postsList);
     res.sendStatus(204);
   } else {
     res.sendStatus(404);

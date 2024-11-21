@@ -1,15 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const postsList = require("../data/posts");
-const  postController = require("../controllers/postController")
+const postController = require("../controllers/postController");
 
 //index
-router.get("/", postController.index)
-
+router.get("/", postController.index);
 
 //show
-router.get("/:id", postController.show)
-
+router.get("/:id", postController.show);
 
 //store
 router.post("/", (req, res) => {
