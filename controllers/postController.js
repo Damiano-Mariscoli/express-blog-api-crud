@@ -1,7 +1,5 @@
 const postsList = require("../data/posts");
 
-const { post } = require("../routers/posts");
-
 function index(req, res) {
   res.json(postsList);
 }
