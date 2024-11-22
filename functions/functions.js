@@ -9,6 +9,8 @@ function unknownEndPoint(req, res, next) {
 }
 
 function errorHandler(err, req, res, next) {
+  console.log("ciao");
+  res.status(200);
   next();
 }
 

@@ -7,10 +7,10 @@ const port = 3000;
 
 app.use(express.json());
 app.use(express.static("public"));
-app.use(functions.unknownEndPoint);
-app.use(functions.errorHandler);
-app.use("/posts", postsRouter);
 
+app.use("/posts", postsRouter);
+functions.unknownEndPoint;
+app.use(functions.errorHandler);
 app.get("/bacheca", (req, res) => {
   const postCount = posts.length;
   res.json({ posts: posts, count: postCount });
