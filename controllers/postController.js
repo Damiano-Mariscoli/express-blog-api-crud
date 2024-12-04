@@ -1,4 +1,5 @@
 const postsList = require("../data/posts");
+const { get } = require("../routers/posts");
 
 function index(req, res) {
   res.json(postsList);
@@ -44,28 +45,28 @@ function destroy(req, res) {
 }
 
 function store(req, res) {
-  if (
-    req.body.title === undefined ||
-    req.body.slug === undefined ||
-    req.body.content === undefined ||
-    req.body.image === undefined ||
-    req.body.tags === undefined
-  ) {
-    res.send("errore mancano dei campi da compilare");
-  } else {
-    let newIndex = postsList[postsList.length - 1].id + 1;
-    const newPost = {
-      id: newIndex,
-      title: req.body.title,
-      slug: req.body.slug,
-      content: req.body.content,
-      image: req.body.image,
-      tags: req.body.tags,
-    };
-    console.log(newPost);
-    postsList.push(newPost);
-    res.send("creo un nuovo post");
-  }
+  // if (
+  //   req.body.title === undefined ||
+  //   req.body.slug === undefined ||
+  //   req.body.content === undefined ||
+  //   req.body.image === undefined ||
+  //   req.body.tags === undefined
+  // ) {
+  //   res.send("errore mancano dei campi da compilare");
+  // } else {
+  let newIndex = postsList[postsList.length - 1].id + 1;
+  const newPost = {
+    id: newIndex,
+    title: req.body.title,
+    slug: req.body.slug,
+    content: req.body.content,
+    image: req.body.image,
+    tags: req.body.tags,
+  };
+  console.log(newPost);
+  postsList.push(newPost);
+  res.send("creo un nuovo post");
+  // }
 }
 
 function update(req, res) {

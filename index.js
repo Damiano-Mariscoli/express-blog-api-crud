@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const port = 3000;
 const unknownEndPoint = require("./middlewares/unknownEndPoint.js");
 const errorsHandler = require("./middlewares/errorHandler.js");
 const postsRouter = require("./routers/posts.js");
 
+app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
